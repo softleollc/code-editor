@@ -23,8 +23,7 @@ body {
 .editor-container.collapsed {
   flex-grow: 0;
 }
-.editor-container.collapsed
-  .CodeMirror-scroll {
+.editor-container.collapsed .CodeMirror-scroll {
   position: absolute;
   overflow: hidden !important;
 }
@@ -38,6 +37,11 @@ body {
   border-top-right-radius: 0.5rem;
   border-top-left-radius: 0.5rem;
 }
+
+.editor-title .svg-inline--fa {
+  color: rgb(246, 225, 188);
+}
+
 .CodeMirror {
   height: 100% !important;
 }
@@ -54,4 +58,15 @@ body {
   border: none;
   color: white;
   cursor: pointer;
+}
+
+.footer {
+  background-color: rgb(4, 11, 15) !important;
+  position: fixed;
+  bottom: 0;
+  height: 36px;
+  color: rgb(246, 225, 188);
+  text-align: center;
+  line-height: 2.5;
+  justify-content: center !important;
 }

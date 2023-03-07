@@ -6,48 +6,24 @@ import "codemirror/mode/javascript/javascript";
 import "codemirror/mode/css/css";
 import { Controlled as ControlledEditor } from "react-codemirror2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCompressAlt,
-  faExpandAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCompressAlt, faExpandAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default function Editor(props) {
-  const {
-    displayName,
-    value,
-    onChange,
-    language,
-  } = props;
-  const [open, setOpen] = useState(
-    true
-  );
-  const handleChange = (
-    editor,
-    data,
-    value
-  ) => {
+  const { displayName, value, icon, onChange, language } = props;
+  const [open, setOpen] = useState(true);
+  const handleChange = (editor, data, value) => {
     onChange(value);
   };
   return (
-    <div
-      className={`editor-container ${
-        open ? "" : "collapsed"
-      }`}
-    >
+    <div className={`editor-container ${open ? "" : "collapsed"}`}>
       <div className="editor-title">
-        {displayName}
+        <FontAwesomeIcon icon={icon} /> {displayName}
         <button
           type="button"
           className="expand-collapse-btn"
           onClick={() => setOpen(!open)}
         >
-          <FontAwesomeIcon
-            icon={
-              open
-                ? faCompressAlt
-                : faExpandAlt
-            }
-          />
+          <FontAwesomeIcon icon={open ? faCompressAlt : faExpandAlt} />
         </button>
       </div>
       <ControlledEditor
@@ -60,6 +36,10 @@ export default function Editor(props) {
           mode: language,
           theme: "material",
           lineNumbers: true,
+          autoCloseTags: true,
+          matchTags: true,
+          autoCloseBrackets: true,
+          matchBrackets: true
         }}
       />
     </div>

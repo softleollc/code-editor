@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import Editor from "./Editor";
+import Footer from "./Footer";
+import {
+  faHtml5,
+  faCss3Alt,
+  faJsSquare
+} from "@fortawesome/free-brands-svg-icons";
 
 function App() {
   const [html, setHtml] = useLocalStorage("html", "");
@@ -26,18 +32,21 @@ function App() {
         <Editor
           language="xml"
           displayName="HTML"
+          icon={faHtml5}
           value={html}
           onChange={setHtml}
         />
         <Editor
           language="css"
           displayName="CSS"
+          icon={faCss3Alt}
           value={css}
           onChange={setCss}
         />
         <Editor
           language="javascript"
           displayName="JS"
+          icon={faJsSquare}
           value={js}
           onChange={setJs}
         />
@@ -52,6 +61,7 @@ function App() {
           height="100%"
         />
       </div>
+      <Footer />
     </>
   );
 }
